@@ -1,6 +1,6 @@
 const Verify = require('./Verify.js');
 const PhoneID = require('./PhoneID.js');
-const TeleBureau = require('./TeleBureau.js');
+const TeleBureau = require('./Telebureau.js');
 
 module.exports = class TeleSign {
     constructor(customerId,
