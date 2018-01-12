@@ -26,6 +26,8 @@ Once you have cloned this SDK, you can install it using the following command
 npm install /path/to/sdk -save
 ```
 
+Node.js **6+** is required for the TeleSign Enterprise Node.js SDK.
+
 Authentication
 --------------
 
