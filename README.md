@@ -1,4 +1,4 @@
-[<img src="/node_enterprise.jpg">](https://developer.telesign.com)
+[<img src="/node_enterprise.jpg">](https://enterprise.telesign.com)
 
 TeleSign Node.js SDK
 =================
@@ -15,7 +15,7 @@ Documentation
 -------------
 
 Code documentation is included in the SDK. Complete documentation, quick start guides and reference material
-for the TeleSign API is available within the [TeleSign Developer Center](https://developer.telesign.com/).
+for the TeleSign API is available within the [TeleSign Enterprise Documentation](https://enterprise.telesign.com/).
 
 
 Installation
@@ -100,7 +100,5 @@ Send an SMS
 
 Further reading
 ---------------
-
-* The definitions of the parameters are best documented in the REST API documentation 
-located [here](https://developer.telesign.com/docs/api-docs).
+* For documentation, see the [TeleSign Enterprise Documentation](https://enterprise.telesign.com).
 * Code examples can be found [here](/examples).
