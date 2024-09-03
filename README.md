@@ -15,20 +15,7 @@
 
 Follow these steps to add this SDK as a dependency to your project. Both the Telesign Full-service Node.js SDK and the Telesign Self-service Node.js SDK are installed because the Full-service SDK also uses some functionality in the Self-service SDK.
 
-1. Create a new directory to download the Telesign SDK. This should not be in the same directory as where you build your integration.
-
-```
-    cd ~/code/local
-    mkdir telesign_sdks
-    cd telesign_sdks
-```
-
-
-2. Clone this repo. A new directory should appear called `node_telesign_enterprise`:
-
-   `git clone https://github.com/TeleSign/node_telesign_enterprise.git`
- 
-3. Create another directory (this must be outside of the SDK directory you just created) where you want to create your Telesign integration. Skip this step if you already have created a project. If you plan to create multiple Node.js projects that use Telesign, we recommend that you group them within a `telesign_integrations` directory.
+1. *(Optional)* Create a new directory for your Node.js project. Skip this step if you already have created a project. If you plan to create multiple Node.js projects that use Telesign, we recommend that you group them within a `telesign_integrations` directory.
 
 ```
     cd ~/code/local
@@ -38,14 +25,11 @@ Follow these steps to add this SDK as a dependency to your project. Both the Tel
     cd {your project name}
 ```
 
-4.  Install the SDK as a dependency in this new integration directory using the command below. It references the path to where you downloaded the SDK. You should see a message in the terminal notifying you that you have successfully installed the SDK. (Edit the path in the command below if you are using an existing project directory):
+2. Install the SDK as a dependency in the top-level directory of your project using the command below. Once the SDK is installed, you should see a message in the terminal notifying you that you have successfully installed the SDK.
 
-   `npm install ~/code/local/telesign_sdks/node_telesign_enterprise --save`
+    `npm install telesignenterprisesdk --save`
 
-5. In your integration code, reference the package name "telesignenterprisesdk". You don't have to directly reference the full path to the SDK:
-
-   `const TelesignSDK = require('telesignenterprisesdk');`
-
+This will also install the Telesign Self-service Node SDK since it is a dependency for the Full-service SDK.
 
 ## Authentication
 

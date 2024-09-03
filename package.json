@@ -1,6 +1,6 @@
 {
   "name": "telesignenterprisesdk",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Official TeleSign SDK for Rest APIs including SMS, Voice, PhoneID, TeleBureau and more",
   "repository": {
     "type": "git",
