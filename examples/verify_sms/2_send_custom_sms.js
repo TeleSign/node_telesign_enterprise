@@ -1,13 +1,11 @@
-const TelesignSDK = require('../../src/telesign');
-// NOTE: change this to the following if using npm package
-// var TelesignSDK = require('telesignenterprisesdk');
+var TelesignSDK = require('telesignenterprisesdk');
 
 
 console.log("## verify.sms ##");
 
-const customerId = "customer_id"; // Todo: find in portal.telesign.com
-const apiKey = "dGVzdCBhcGkga2V5IGZvciBzZGsgZXhhbXBsZXM="; // Todo: find in portal.telesign.com
-const phoneNumber = "phone_number";
+const customerId = process.env.CUSTOMER_ID || "FFFFFFFF-EEEE-DDDD-1234-AB1234567890";
+const apiKey = process.env.API_KEY || "ABC12345yusumoN6BYsBVkh+yRJ5czgsnCehZaOYldPJdmFh6NeX8kunZ2zU1YWaUw/0wV6xfw==";
+const phoneNumber = process.env.PHONE_NUMBER || "11234567890";
 const optionalParams = {template: "Your Widgets 'n' More verification code is $$CODE$$."};
 
 const client = new TelesignSDK(customerId, apiKey);

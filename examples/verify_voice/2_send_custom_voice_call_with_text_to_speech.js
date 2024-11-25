@@ -1,13 +1,11 @@
-const TelesignSDK = require('../../src/telesign');
-// NOTE: change this to the following if using npm package
-// var TelesignSDK = require('telesignenterprisesdk');
+var TelesignSDK = require('telesignenterprisesdk');
 
 
 console.log("## verify.voice ##");
 
-const customerId = "78747D92-1F7E-11E1-A71A-111111111111";
-const apiKey = "4gS8tDHBSFB22V7suwhMPhb5QQL/9xTQcLOry9GQtodziGZF4WiP5xzEB5IMgjTuYIghWlTskkmb8sj0y+aOgg==";
-const phoneNumber = "13235564074";
+const customerId = process.env.CUSTOMER_ID || "FFFFFFFF-EEEE-DDDD-1234-AB1234567890";
+const apiKey = process.env.API_KEY || "ABC12345yusumoN6BYsBVkh+yRJ5czgsnCehZaOYldPJdmFh6NeX8kunZ2zU1YWaUw/0wV6xfw==";
+const phoneNumber = process.env.PHONE_NUMBER || "11234567890";
 const verifyCode = "27364"
 const optionalParams = {tts_message: `Hello, your code is ${verifyCode}. Once again, your code is ${verifyCode}. Goodbye.`};
 
