@@ -1,6 +1,7 @@
 const Verify = require('./verify.js');
 const PhoneID = require('./phoneid.js');
 const Telebureau = require('./telebureau.js');
+const Messaging = require('./messaging.js');
 
 module.exports = class Telesign {
     constructor(customerId,
@@ -12,5 +13,6 @@ module.exports = class Telesign {
         this.verify = new Verify(customerId, apiKey, restEndpoint, timeout, useragent);
         this.phoneid = new PhoneID(customerId, apiKey, restEndpoint, timeout, useragent);
         this.telebureau = new Telebureau(customerId, apiKey, restEndpoint, timeout, useragent);
+        this.messaging = new Messaging(customerId, apiKey, restEndpoint, timeout, useragent);
     }
 };
