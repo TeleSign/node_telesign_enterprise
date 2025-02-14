@@ -1,7 +1,7 @@
 const Telesign = require('telesignsdk');
 
 /**
- * TeleSign's Messaging API allows you to easily send a message to the target recipient using any of Telesign's supported channels."
+ * TeleSign's Messaging API allows you to easily send a message to the target recipient using any of Telesign's supported channels
  * or you can send verification messages containing one-time passcodes (OTP).
  */
 class Messaging {
