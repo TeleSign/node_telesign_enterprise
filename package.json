@@ -1,20 +1,23 @@
 {
   "name": "telesignenterprisesdk",
-  "version": "3.0.2",
-  "description": "Official TeleSign SDK for Rest APIs including SMS, Voice, PhoneID, TeleBureau and more",
+  "version": "3.1.0",
+  "description": "This SDK enhances the functionality of the Telesign Self-service Node SDK, providing access to a broader range of Telesign APIs. See our source code on GitHub (https://github.com/TeleSign/node_telesign_enterprise) for installation instructions and other details.",
   "repository": {
     "type": "git",
     "url": "https://github.com/TeleSign/node_telesign_enterprise"
   },
   "main": "src/telesign.js",
   "dependencies": {
-    "telesignsdk": "^3.0.1"
+    "telesignsdk": "^3.0.2"
+  },
+  "scripts": {
+    "test": "node ./test/test.suite.js"
   },
   "keywords": [
     "Telesign",
     "sms",
     "voice",
-    "score",
+    "intelligence",
     "phoneid",
     "twofactor",
     "2factor",

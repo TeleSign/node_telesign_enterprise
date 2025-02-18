@@ -20,6 +20,9 @@ class Verify {
         this.pushResource = "/v2/verify/push"
         this.statusResource = "/v1/verify/%s"
         this.completionResource = "/v1/verify/completion/%s"
+        this.baseUrlVerifyApi = "https://verify.telesign.com"
+        this.defaultFsBaseUrl = restEndpoint
+        this.pathVerification = "/verification"
     }
 
     /***
@@ -42,6 +45,28 @@ class Verify {
         }
 
         this.rest.execute(callback, "POST", this.smsResource, params);
+    }
+
+    /***
+     * Use this action to create a verification process for the specified phone number.
+     * See https://developer.telesign.com/enterprise/reference/createverificationprocess for detailed API documentation.
+     * @param callback: Callback method to handle response.
+     * @param phoneNumber: Phone number to send SMS.
+     * @param params: Dictionary of all optional parameters.
+     */
+     createVerificationProcess(callback, phoneNumber, params = {}) {
+        this.rest.setRestEndpoint(this.baseUrlVerifyApi)
+        this.rest.setContentType("application/json")
+        
+        params.recipient = {
+            phone_number: phoneNumber
+        }
+
+        if (!("verification_policy" in params)) {
+            params.verification_policy = [{ method: "sms" }]
+        }
+     
+        this.rest.execute(callback, "POST", this.pathVerification, params);
     }
 
     /***
