@@ -1,3 +1,10 @@
+3.1.0
+- Added method to send requests to Telesign Messaging.
+- Added method to send requests to the Telesign Verify API.
+- Removed Push Verify method in VerifyClient class
+- Added unit test for requests to Telesign Messaging.
+- Added unit test for requests to the Telesign Verify API.
+
 3.0.2
 - Adds node-fetch by default for improved support in older versions of Node.
 
