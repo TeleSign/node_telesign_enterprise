@@ -1,5 +1,6 @@
 const Telesign = require('telesignsdk');
 const util = require('util');
+const { getInstalledVersion, getVersionDependency } = require('./Util.js');
 
 /***
  * TeleBureau is a service is based on TeleSign's watchlist, which is a proprietary database containing verified phone
@@ -13,8 +14,9 @@ class Telebureau {
                 restEndpoint="https://rest-ww.telesign.com",
                 timeout=10000,
                 userAgent=null) {
-
-        this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent).rest;
+        const sdkVersionOrigin = getInstalledVersion()
+        const sdkVersionDependency = getVersionDependency("telesignsdk")
+        this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
 
         this.createResource = "/v1/telebureau/event";
         this.retrieveResource = "/v1/telebureau/event/%s";
