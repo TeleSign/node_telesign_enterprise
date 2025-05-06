@@ -1,5 +1,6 @@
 const Telesign = require('telesignsdk');
 const util = require('util')
+const { getInstalledVersion, getVersionDependency } = require('./helpers.js');
 
 /***
  * The Verify API delivers phone-based verification and two-factor authentication using a time-based, one-time passcode
@@ -12,8 +13,9 @@ class Verify {
                 restEndpoint="https://rest-ww.telesign.com",
                 timeout=10000,
                 userAgent=null) {
-
-        this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent).rest;
+        const sdkVersionOrigin = getInstalledVersion()
+        const sdkVersionDependency = getVersionDependency("telesignsdk")
+        this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
         this.smsResource = "/v1/verify/sms"
         this.voiceResource = "/v1/verify/call"
         this.smartResource = "/v1/verify/smart"

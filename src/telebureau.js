@@ -1,6 +1,6 @@
 const Telesign = require('telesignsdk');
 const util = require('util');
-const { getInstalledVersion, getVersionDependency } = require('./Util.js');
+const { getInstalledVersion, getVersionDependency } = require('./helpers.js');
 
 /***
  * TeleBureau is a service is based on TeleSign's watchlist, which is a proprietary database containing verified phone

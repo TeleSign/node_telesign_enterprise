@@ -1,5 +1,5 @@
 const Telesign = require('telesignsdk');
-const { getInstalledVersion, getVersionDependency } = require('./Util.js');
+const { getInstalledVersion, getVersionDependency } = require('./helpers.js');
 
 /**
  * Telesign Messaging allows you to easily send a message to the target recipient using any of Telesign's supported channels.
@@ -13,6 +13,9 @@ class Messaging {
                 userAgent=null) {
         const sdkVersionOrigin = getInstalledVersion()
         const sdkVersionDependency = getVersionDependency("telesignsdk")
+        console.log('sdkVersionOrigin', sdkVersionOrigin);
+        console.log('sdkVersionDependency', sdkVersionDependency);
+        
         this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
         this.omniMessageResource = "/v1/omnichannel"
     }
