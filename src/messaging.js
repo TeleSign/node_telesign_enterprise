@@ -13,9 +13,6 @@ class Messaging {
                 userAgent=null) {
         const sdkVersionOrigin = getInstalledVersion()
         const sdkVersionDependency = getVersionDependency("telesignsdk")
-        console.log('sdkVersionOrigin', sdkVersionOrigin);
-        console.log('sdkVersionDependency', sdkVersionDependency);
-        
         this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
         this.omniMessageResource = "/v1/omnichannel"
     }
