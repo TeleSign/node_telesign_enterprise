@@ -1,5 +1,6 @@
 const Telesign = require('telesignsdk');
 const util = require('util')
+const { getInstalledVersion, getVersionDependency } = require('./helpers.js');
 
 /***
  * PhoneID is a set of REST APIs that deliver deep phone number data attributes that help optimize the end user
@@ -16,8 +17,9 @@ class PhoneID {
                 restEndpoint="https://rest-ww.telesign.com",
                 timeout=10000,
                 userAgent=null) {
-
-        this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent).rest;
+        const sdkVersionOrigin = getInstalledVersion()
+        const sdkVersionDependency = getVersionDependency("telesignsdk")
+        this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
 
         this.standardResource = "/v1/phoneid/standard/%s"
         this.scoreResource = "/v1/phoneid/score/%s"
