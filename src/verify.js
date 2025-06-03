@@ -1,5 +1,6 @@
 const Telesign = require('telesignsdk');
-const util = require('util')
+const util = require('util');
+const OmniVerifyClient = require('./omniverifyclient.js');
 const { getInstalledVersion, getVersionDependency } = require('./helpers.js');
 
 /***
@@ -15,7 +16,8 @@ class Verify {
                 userAgent=null) {
         const sdkVersionOrigin = getInstalledVersion()
         const sdkVersionDependency = getVersionDependency("telesignsdk")
-        this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
+        const telesignRest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
+        this.rest = telesignRest;
         this.smsResource = "/v1/verify/sms"
         this.voiceResource = "/v1/verify/call"
         this.smartResource = "/v1/verify/smart"
@@ -23,7 +25,7 @@ class Verify {
         this.completionResource = "/v1/verify/completion/%s"
         this.baseUrlVerifyApi = "https://verify.telesign.com"
         this.defaultFsBaseUrl = restEndpoint
-        this.pathVerification = "/verification"
+        this.omniVerifyClient = new OmniVerifyClient(telesignRest, restEndpoint);
     }
 
     /***
@@ -56,18 +58,7 @@ class Verify {
      * @param params: Dictionary of all optional parameters.
      */
      createVerificationProcess(callback, phoneNumber, params = {}) {
-        this.rest.setRestEndpoint(this.baseUrlVerifyApi)
-        this.rest.setContentType("application/json")
-        
-        params.recipient = {
-            phone_number: phoneNumber
-        }
-
-        if (!("verification_policy" in params)) {
-            params.verification_policy = [{ method: "sms" }]
-        }
-     
-        this.rest.execute(callback, "POST", this.pathVerification, params);
+        this.omniVerifyClient.createVerificationProcess(callback, phoneNumber, params);
     }
 
     /***
