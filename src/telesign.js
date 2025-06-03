@@ -2,7 +2,7 @@ const Verify = require('./verify.js');
 const PhoneID = require('./phoneid.js');
 const Telebureau = require('./telebureau.js');
 const Messaging = require('./messaging.js');
-const OmniVerify = require('./moniverifyclient.js');
+const OmniVerify = require('./omniverifyclient.js');
 
 module.exports = class Telesign {
     constructor(customerId,
