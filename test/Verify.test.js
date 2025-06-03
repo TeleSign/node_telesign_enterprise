@@ -7,7 +7,7 @@ async function verifyTest() {
   const customerId = process.env.CUSTOMER_ID  ||'FFFFFFFF-EEEE-DDDD-1234-AB1234567890';
   const apiKey = process.env.API_KEY || 'ABC12345yusumoN6BYsBVkh+yRJ5czgsnCehZaOYldPJdmFh6NeX8kunZ2zU1YWaUw/0wV6xfw==';
   const phoneNumber = process.env.PHONE_NUMBER || '11234567890';
-  const testBaseUrl = "https://verify-stg.telesign.com";
+  const testBaseUrl = "https://rest-s13.c11.telesign.com";
 
   it('Testing createVerificationProcess method', async () => {
     const verifyClient = new VerifyClient(customerId, apiKey, testBaseUrl);
