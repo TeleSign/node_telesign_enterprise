@@ -1,10 +1,18 @@
 const Telesign = require('telesignsdk');
 const util = require('util');
+const { getInstalledVersion, getVersionDependency } = require('./helpers.js');
 
 class OmniVerifyClient {
 
-    constructor(restClient) {
-        this.rest = restClient;
+    constructor(customerId,
+                apiKey,
+                restEndpoint="https://rest-ww.telesign.com",
+                timeout=10000,
+                userAgent=null) {
+        const sdkVersionOrigin = getInstalledVersion()
+        const sdkVersionDependency = getVersionDependency("telesignsdk")
+        this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
+        
         this.verificationResource = "/verification"
         this.verificationStatusResource = "/verification/%s"
     }
