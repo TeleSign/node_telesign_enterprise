@@ -23,7 +23,6 @@ class Verify {
         this.smartResource = "/v1/verify/smart"
         this.statusResource = "/v1/verify/%s"
         this.completionResource = "/v1/verify/completion/%s"
-        this.baseUrlVerifyApi = "https://verify.telesign.com"
         this.defaultFsBaseUrl = restEndpoint
         this.omniVerifyClient = new OmniVerifyClient(customerId, apiKey);
     }
