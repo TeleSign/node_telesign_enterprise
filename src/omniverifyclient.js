@@ -6,7 +6,7 @@ class OmniVerifyClient {
 
     constructor(customerId,
                 apiKey,
-                restEndpoint="https://rest-ww.telesign.com",
+                restEndpoint="https://verify.telesign.com",
                 timeout=10000,
                 userAgent=null) {
         const sdkVersionOrigin = getInstalledVersion()
