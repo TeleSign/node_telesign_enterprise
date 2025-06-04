@@ -9,16 +9,12 @@ module.exports = class Telesign {
                 apiKey,
                 restEndpoint = "https://rest-ww.telesign.com",
                 timeout = 10000,
-                useragent = null) {
-
-        this.verify = new Verify(customerId, apiKey, restEndpoint, timeout, useragent);
+                useragent = null,
+                urlOmniVerify = "https://verify.telesign.com") {
+        this.omniVerify = new OmniVerify(customerId, apiKey, urlOmniVerify);
+        this.verify = new Verify(customerId, apiKey, restEndpoint, timeout, useragent, urlOmniVerify);
         this.phoneid = new PhoneID(customerId, apiKey, restEndpoint, timeout, useragent);
         this.telebureau = new Telebureau(customerId, apiKey, restEndpoint, timeout, useragent);
         this.messaging = new Messaging(customerId, apiKey, restEndpoint, timeout, useragent);
-        const urlOmniVerify = ""
-        if (restEndpoint == "https://rest-ww.telesign.com") {
-            urlOmniVerify = "https://verify.telesign.com";
-        }
-        this.omniVerify = new OmniVerify(customerId, apiKey, urlOmniVerify);
     }
 };

@@ -1,6 +1,6 @@
 const Telesign = require('telesignsdk');
 const util = require('util');
-const OmniVerifyClient = require('./omniverifyclient.js');
+const OmniVerify = require('./omniverifyclient.js');
 const { getInstalledVersion, getVersionDependency } = require('./helpers.js');
 
 /***
@@ -13,7 +13,8 @@ class Verify {
                 apiKey,
                 restEndpoint="https://rest-ww.telesign.com",
                 timeout=10000,
-                userAgent=null) {
+                userAgent=null,
+                urlOmniVerify = "https://verify.telesign.com") {
         const sdkVersionOrigin = getInstalledVersion()
         const sdkVersionDependency = getVersionDependency("telesignsdk")
         const telesignRest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
@@ -23,8 +24,8 @@ class Verify {
         this.smartResource = "/v1/verify/smart"
         this.statusResource = "/v1/verify/%s"
         this.completionResource = "/v1/verify/completion/%s"
-        this.defaultFsBaseUrl = restEndpoint
-        this.omniVerifyClient = new OmniVerifyClient(customerId, apiKey);
+        this.defaultFsBaseUrl = restEndpoint;
+        this.omniVerifyClient = new OmniVerify(customerId, apiKey, urlOmniVerify);
     }
 
     /***
