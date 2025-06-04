@@ -15,6 +15,10 @@ module.exports = class Telesign {
         this.phoneid = new PhoneID(customerId, apiKey, restEndpoint, timeout, useragent);
         this.telebureau = new Telebureau(customerId, apiKey, restEndpoint, timeout, useragent);
         this.messaging = new Messaging(customerId, apiKey, restEndpoint, timeout, useragent);
-        this.omniVerify = new OmniVerify(customerId, apiKey, restEndpoint, timeout, useragent);
+        const urlOmniVerify = ""
+        if (restEndpoint == "https://rest-ww.telesign.com") {
+            urlOmniVerify = "https://verify.telesign.com";
+        }
+        this.omniVerify = new OmniVerify(customerId, apiKey, urlOmniVerify);
     }
 };
