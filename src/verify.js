@@ -14,7 +14,7 @@ class Verify {
                 restEndpoint="https://rest-ww.telesign.com",
                 timeout=10000,
                 userAgent=null,
-                urlOmniVerify = "https://verify.telesign.com") {
+                urlOmniVerify="https://verify.telesign.com") {
         const sdkVersionOrigin = getInstalledVersion()
         const sdkVersionDependency = getVersionDependency("telesignsdk")
         const telesignRest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
