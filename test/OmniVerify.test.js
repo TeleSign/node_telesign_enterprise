@@ -38,6 +38,25 @@ function omniverifyTest() {
     expect(getResponse.inner_methods[0].state).toEqual("ONGOING");
   });
 
+  it('Testing omni verify client updateVerificationProcess method', async () => {
+    // Given
+    const action = "finalize";
+    const securityFactor = "121212"; // Invalid code
+    const sut = new OmniVerifyClient(customerId, apiKey);
+    const createResponse = await new Promise((resolve) => {
+      sut.createVerificationProcess((err, res) => resolve(res), phoneNumber);
+    });
+
+    const updateResponse = await new Promise((resolve) => {
+      // When
+      sut.updateVerificationProcess((err, res) => resolve(res), createResponse.reference_id, action, securityFactor);
+    });
+ 
+    // Then
+    // We expect Invalid code entered. Verification is in ONGOING state. End user can try again.
+    expect(updateResponse.status.code).toEqual(3909);
+  });
+
 }
 
 module.exports = { omniverifyTest };

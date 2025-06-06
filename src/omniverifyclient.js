@@ -15,6 +15,7 @@ class OmniVerifyClient {
         
         this.verificationResource = "/verification"
         this.verificationStatusResource = "/verification/%s"
+        this.verificationUpdateResource = "/verification/%s/state"
     }
 
     /***
@@ -48,6 +49,25 @@ class OmniVerifyClient {
         const authMethod = "Basic";
 
         this.rest.execute(callback, "GET", util.format(this.verificationStatusResource, referenceId), params, authMethod);
+    }
+
+    /**
+     * Use this action to update a verification process for the specified reference ID.
+     * <p>
+     * See https://developer.telesign.com/enterprise/reference/updateverificationprocess for detailed API documentation.
+     */
+    updateVerificationProcess(callback, referenceId, action, securityFactor, optionalParams = null) {
+        this.rest.setContentType("application/json");
+        const authMethod = "Basic";
+        var params = {
+            action: action,
+            security_factor: securityFactor
+        };
+        if (optionalParams != null) {
+            params = Object.assign(params, optionalParams)
+        }
+
+        this.rest.execute(callback, "PATCH", util.format(this.verificationUpdateResource, referenceId), params, authMethod);
     }
 }
 
