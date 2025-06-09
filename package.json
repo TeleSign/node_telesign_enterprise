@@ -8,7 +8,7 @@
   },
   "main": "src/telesign.js",
   "dependencies": {
-    "telesignsdk": "^3.0.3"
+    "telesignsdk": "^3.0.4"
   },
   "scripts": {
     "test": "node ./test/test.suite.js"
