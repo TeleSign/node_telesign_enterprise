@@ -13,10 +13,10 @@ const { getInstalledVersion, getVersionDependency } = require('./helpers.js');
 class PhoneID {
 
     constructor(customerId,
-                apiKey,
-                restEndpoint="https://rest-ww.telesign.com",
-                timeout=10000,
-                userAgent=null) {
+        apiKey,
+        restEndpoint = "https://rest-ww.telesign.com",
+        timeout = 10000,
+        userAgent = null) {
         const sdkVersionOrigin = getInstalledVersion()
         const sdkVersionDependency = getVersionDependency("telesignsdk")
         this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
@@ -26,6 +26,8 @@ class PhoneID {
         this.contactResource = "/v1/phoneid/contact/%s"
         this.liveResource = "/v1/phoneid/live/%s"
         this.numberDeactivationResource = "/v1/phoneid/number_deactivation/%s"
+        this.getInfoResource = "/v1/phoneid/%s"
+        this.getInfoAltResource = "/v1/phoneid"
     }
 
     /***
@@ -39,7 +41,7 @@ class PhoneID {
      * @param optionalParams: Dictionary of all optional parameters.
      * transaction.
      */
-    standard(callback, phoneNumber, optionalParams=null) {
+    standard(callback, phoneNumber, optionalParams = null) {
         var params = {
             phone_number: phoneNumber
         };
@@ -62,7 +64,7 @@ class PhoneID {
      * @param optionalParams: Dictionary of all optional parameters.
      * transaction.
      */
-    score(callback, phoneNumber, ucid, optionalParams=null) {
+    score(callback, phoneNumber, ucid, optionalParams = null) {
         var params = {
             phone_number: phoneNumber,
             ucid: ucid
@@ -86,7 +88,7 @@ class PhoneID {
      * @param optionalParams: Dictionary of all optional parameters.
      * transaction.
      */
-    contact(callback, phoneNumber, ucid, optionalParams=null) {
+    contact(callback, phoneNumber, ucid, optionalParams = null) {
         var params = {
             phone_number: phoneNumber,
             ucid: ucid
@@ -110,7 +112,7 @@ class PhoneID {
      * @param optionalParams: Dictionary of all optional parameters.
      * transaction.
      */
-    live(callback, phoneNumber, ucid, optionalParams=null) {
+    live(callback, phoneNumber, ucid, optionalParams = null) {
         var params = {
             phone_number: phoneNumber,
             ucid: ucid
@@ -134,7 +136,7 @@ class PhoneID {
      * @param optionalParams: Dictionary of all optional parameters.
      * transaction.
      */
-    numberDeactivation(callback, phoneNumber, ucid, optionalParams=null) {
+    numberDeactivation(callback, phoneNumber, ucid, optionalParams = null) {
         var params = {
             phone_number: phoneNumber,
             ucid: ucid
@@ -146,6 +148,48 @@ class PhoneID {
         this.rest.execute(callback, "GET", util.format(this.numberDeactivationResource, phoneNumber), params);
     }
 
+    /**
+     * Enter a phone number with country code to receive detailed information about carrier, location, and other details.
+     *
+     * See https://developer.telesign.com/enterprise/reference/submitphonenumberforidentity for detailed API documentation.
+     * 
+     * @param callback: Callback method to handle response.
+     * @param phoneNumber: Phone number associated with the event.
+     * @param optionalParams: Dictionary of all optional parameters.
+     */
+
+    getInfo(callback, phoneNumber, optionalParams = {}) {
+        if (!optionalParams.hasOwnProperty('consent')) {
+            optionalParams.consent = {
+                method: 1
+            };
+        }
+
+        this.rest.execute(callback, "POST", util.format(this.getInfoResource, phoneNumber), optionalParams);
+    }
+
+    /**
+     * Enter a phone number with country code to receive detailed information about carrier, location, and other details.
+     *
+     * See https://developer.telesign.com/enterprise/reference/submitphonenumberforidentityalt for detailed API documentation.
+     * 
+     * @param callback: Callback method to handle response.
+     * @param phoneNumber: Phone number associated with the event.
+     * @param optionalParams: Dictionary of all optional parameters.
+    */
+
+    getInfoAlt(callback, phoneNumber, optionalParams = {}) {
+        optionalParams.phone_number = phoneNumber;
+
+        if (!optionalParams.hasOwnProperty('consent')) {
+            optionalParams.consent = {
+                method: 1
+            };
+        }
+
+        this.rest.setContentType("application/json");
+        this.rest.execute(callback, "POST", this.getInfoAltResource, optionalParams);
+    }
 }
 
 module.exports = PhoneID;
