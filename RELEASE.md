@@ -1,3 +1,6 @@
+3.3.1
+- Fixing request body in the live method of the phoneId module.
+
 3.3.0
 - Added methods to get information about a specified phone number
 

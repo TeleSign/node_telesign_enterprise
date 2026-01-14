@@ -1,6 +1,6 @@
 {
   "name": "telesignenterprisesdk",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "This SDK enhances the functionality of the Telesign Self-service Node SDK, providing access to a broader range of Telesign APIs. See our source code on GitHub (https://github.com/TeleSign/node_telesign_enterprise) for installation instructions and other details.",
   "repository": {
     "type": "git",
