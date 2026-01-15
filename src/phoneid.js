@@ -104,21 +104,18 @@ class PhoneID {
      * The PhoneID Live API delivers insights such as whether a phone is active or disconnected, a device is reachable
      * or unreachable and its roaming status.
      *
-     * See https://developer.telesign.com/docs/rest_api-phoneid-live for detailed API documentation.
+     * See https://developer.telesign.com/enterprise/reference/submitphonenumberforlivestatus for detailed API documentation.
      *
      * @param callback: Callback method to handle response.
      * @param phoneNumber: Phone number associated with the event.
      * @param ucid: A string that specifies one of the use case codes.
-     * @param optionalParams: Dictionary of all optional parameters.
-     * transaction.
+
      */
-    live(callback, phoneNumber, ucid, optionalParams = null) {
-        var params = {
-            phone_number: phoneNumber,
-            ucid: ucid
-        };
-        if (optionalParams != null) {
-            params = Object.assign(params, optionalParams)
+    live(callback, phoneNumber, ucid = null) {
+        const params = {};
+
+        if (ucid) {
+            params['ucid'] = ucid;
         }
 
         this.rest.execute(callback, "GET", util.format(this.liveResource, phoneNumber), params);

@@ -28,6 +28,17 @@ async function phoneidTest() {
     expect(actualResponse.status.code).toEqual(300);
   });
 
+  it('Testing live method', async () => {
+    const phoneIdClient = new PhoneIdClient(customerId, apiKey);
+    const ucid = "BACF";
+
+    const actualResponse = await new Promise((resolve) => {
+      phoneIdClient.live((err, res) => resolve(res), phoneNumber, ucid);
+    });
+
+    expect(actualResponse.status.code).toEqual(300);
+  });
+
 }
 
 module.exports = { phoneidTest };
