@@ -1,4 +1,6 @@
 4.0.0
+- Added support for Intelligence Cloud to use new endpoint.
+- Removed the legacy PID Score.
 - Fixing request body in the live method of the phoneId module.
 
 3.3.0
