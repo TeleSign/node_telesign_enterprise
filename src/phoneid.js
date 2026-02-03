@@ -22,7 +22,6 @@ class PhoneID {
         this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
 
         this.standardResource = "/v1/phoneid/standard/%s"
-        this.scoreResource = "/v1/phoneid/score/%s"
         this.contactResource = "/v1/phoneid/contact/%s"
         this.liveResource = "/v1/phoneid/live/%s"
         this.numberDeactivationResource = "/v1/phoneid/number_deactivation/%s"
@@ -50,30 +49,6 @@ class PhoneID {
         }
 
         this.rest.execute(callback, "GET", util.format(this.standardResource, phoneNumber), params);
-    }
-
-    /***
-     * Score is an API that delivers reputation scoring based on phone number intelligence, traffic patterns, machine
-     * learning, and a global data consortium.
-     *
-     * See https://developer.telesign.com/docs/rest_api-phoneid-score for detailed API documentation.
-     *
-     * @param callback: Callback method to handle response.
-     * @param phoneNumber: Phone number associated with the event.
-     * @param ucid: A string that specifies one of the use case codes.
-     * @param optionalParams: Dictionary of all optional parameters.
-     * transaction.
-     */
-    score(callback, phoneNumber, ucid, optionalParams = null) {
-        var params = {
-            phone_number: phoneNumber,
-            ucid: ucid
-        };
-        if (optionalParams != null) {
-            params = Object.assign(params, optionalParams)
-        }
-
-        this.rest.execute(callback, "GET", util.format(this.scoreResource, phoneNumber), params);
     }
 
     /***
