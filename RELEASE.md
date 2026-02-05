@@ -1,3 +1,6 @@
+5.0.1
+- Fix Score constructor initialization.
+
 5.0.0
 - Added support for Intelligence Cloud to use new endpoint.
 - Removed the legacy PID Score.
