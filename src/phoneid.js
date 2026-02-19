@@ -22,7 +22,6 @@ class PhoneID {
         this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
 
         this.standardResource = "/v1/phoneid/standard/%s"
-        this.contactResource = "/v1/phoneid/contact/%s"
         this.liveResource = "/v1/phoneid/live/%s"
         this.numberDeactivationResource = "/v1/phoneid/number_deactivation/%s"
         this.getInfoResource = "/v1/phoneid/%s"
@@ -49,30 +48,6 @@ class PhoneID {
         }
 
         this.rest.execute(callback, "GET", util.format(this.standardResource, phoneNumber), params);
-    }
-
-    /***
-     * The PhoneID Contact API delivers contact information related to the subscriber's phone number to provide another
-     * set of indicators for established risk engines.
-     *
-     * See https://developer.telesign.com/docs/rest_api-phoneid-contact for detailed API documentation.
-     *
-     * @param callback: Callback method to handle response.
-     * @param phoneNumber: Phone number associated with the event.
-     * @param ucid: A string that specifies one of the use case codes.
-     * @param optionalParams: Dictionary of all optional parameters.
-     * transaction.
-     */
-    contact(callback, phoneNumber, ucid, optionalParams = null) {
-        var params = {
-            phone_number: phoneNumber,
-            ucid: ucid
-        };
-        if (optionalParams != null) {
-            params = Object.assign(params, optionalParams)
-        }
-
-        this.rest.execute(callback, "GET", util.format(this.contactResource, phoneNumber), params);
     }
 
     /***
