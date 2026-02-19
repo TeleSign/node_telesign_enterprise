@@ -1,3 +1,7 @@
+6.0.0
+- Removed the legacy PID Contact method.
+- Removed Smart Verify method.
+
 5.0.1
 - Fix Score constructor initialization.
 

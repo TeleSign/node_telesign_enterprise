@@ -10,10 +10,10 @@ const { getInstalledVersion, getVersionDependency } = require('./helpers.js');
 class Telebureau {
 
     constructor(customerId,
-                apiKey,
-                restEndpoint="https://rest-ww.telesign.com",
-                timeout=10000,
-                userAgent=null) {
+        apiKey,
+        restEndpoint = "https://rest-ww.telesign.com",
+        timeout = 10000,
+        userAgent = null) {
         const sdkVersionOrigin = getInstalledVersion()
         const sdkVersionDependency = getVersionDependency("telesignsdk")
         this.rest = new Telesign(customerId, apiKey, restEndpoint, timeout, userAgent, "node_telesign_enterprise", sdkVersionOrigin, sdkVersionDependency).rest;
@@ -35,7 +35,7 @@ class Telebureau {
      * @param optionalParams: Dictionary of all optional parameters.
      * transaction.
      */
-    createEvent(callback, phoneNumber, fraudType, occurredAt, optionalParams=null) {
+    createEvent(callback, phoneNumber, fraudType, occurredAt, optionalParams = null) {
         let params = {
             phone_number: phoneNumber,
             fraud_type: fraudType,
@@ -59,7 +59,7 @@ class Telebureau {
      * @param optionalParams: Dictionary of all optional parameters.
      * transaction.
      */
-    retrieveEvent(callback, referenceID, optionalParams=null) {
+    retrieveEvent(callback, referenceID, optionalParams = null) {
         this.rest.execute(callback, "GET", util.format(this.retrieveResource, referenceID), optionalParams);
     }
 
@@ -74,7 +74,7 @@ class Telebureau {
      * @param optionalParams: Dictionary of all optional parameters.
      * transaction.
      */
-    deleteEvent(callback, referenceID, optionalParams=null) {
+    deleteEvent(callback, referenceID, optionalParams = null) {
         this.rest.execute(callback, "DELETE", util.format(this.deleteResource, referenceID), optionalParams);
     }
 }
