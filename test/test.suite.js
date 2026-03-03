@@ -3,9 +3,11 @@ const { verifyTest } = require('./Verify.test.js');
 const { omniverifyTest } = require('./OmniVerify.test.js');
 const { phoneidTest } = require('./PhoneId.test.js');
 const { scoreTest } = require('./ScoreClient.test.js');
+const { appVerifyTest } = require('./AppVerify.test.js');
 
 messagingTest();
 verifyTest();
 omniverifyTest();
 phoneidTest();
 scoreTest();
+appVerifyTest();

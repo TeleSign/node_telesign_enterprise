@@ -62,21 +62,6 @@ class Telebureau {
     retrieveEvent(callback, referenceID, optionalParams = null) {
         this.rest.execute(callback, "GET", util.format(this.retrieveResource, referenceID), optionalParams);
     }
-
-    /***
-     * Deletes a previously submitted fraud event. You make this call in your web application after completion of the
-     * create transaction for a telebureau event.
-     *
-     * See https://developer.telesign.com/docs/telebureau-api for detailed API documentation.
-     *
-     * @param callback: Callback method to handle response.
-     * @param referenceID: reference_id for the transaction from Telesign's response on create.
-     * @param optionalParams: Dictionary of all optional parameters.
-     * transaction.
-     */
-    deleteEvent(callback, referenceID, optionalParams = null) {
-        this.rest.execute(callback, "DELETE", util.format(this.deleteResource, referenceID), optionalParams);
-    }
 }
 
 module.exports = Telebureau;
