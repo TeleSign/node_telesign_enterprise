@@ -1,3 +1,7 @@
+7.0.0
+- Added full support for App Verify API.
+- Removed Delete Telebureau method.
+
 6.0.0
 - Removed the legacy PID Contact method.
 - Removed Smart Verify method.

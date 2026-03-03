@@ -4,6 +4,7 @@ const Telebureau = require('./telebureau.js');
 const Messaging = require('./messaging.js');
 const OmniVerify = require('./omniverifyclient.js');
 const ScoreClient = require("./scoreclient.js");
+const AppVerifyClient = require("./appverifyclient.js");
 const detectEndpoint = "https://detect.telesign.com";
 
 module.exports = class Telesign {
@@ -19,5 +20,6 @@ module.exports = class Telesign {
         this.telebureau = new Telebureau(customerId, apiKey, restEndpoint, timeout, useragent);
         this.messaging = new Messaging(customerId, apiKey, restEndpoint, timeout, useragent);
         this.score = new ScoreClient(customerId, apiKey, detectEndpoint, timeout, useragent);
+        this.appVerify = new AppVerifyClient(customerId, apiKey, restEndpoint, timeout, useragent);
     }
 };
